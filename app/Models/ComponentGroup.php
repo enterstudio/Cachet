@@ -27,8 +27,9 @@ use McCool\LaravelAutoPresenter\HasPresenter;
  */
 class ComponentGroup extends Model implements HasPresenter
 {
-    use SearchableTrait, SortableTrait, ValidatingTrait;
-
+    use SearchableTrait;
+    use SortableTrait;
+    use ValidatingTrait;
     /**
      * Viewable only authenticated users.
      *
@@ -81,8 +82,8 @@ class ComponentGroup extends Model implements HasPresenter
     public $rules = [
         'name'      => 'required|string',
         'order'     => 'required|int',
-        'collapsed' => 'required|int',
-        'visible'   => 'required|int',
+        'collapsed' => 'required|int|between:0,4',
+        'visible'   => 'required|bool',
     ];
 
     /**
